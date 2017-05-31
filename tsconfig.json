@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "es2015",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "outDir": "build",
+        "rootDir": "src",
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": false,
+        "experimentalDecorators": true,
+        "preserveConstEnums": true,
+        "allowJs": true,
+        "sourceMap": false,
+        "baseUrl": ".",
+        "lib": [
+            "dom",
+            "es7"
+        ]
+    },
+    "include": [
+        "src/**/*.tsx"
+    ]
+}

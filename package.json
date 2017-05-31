@@ -1,0 +1,38 @@
+{
+  "name": "react-native-fit",
+  "version": "1.0.0",
+  "description": "Responsive components for react native.",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tibbus/react-native-fit.git"
+  },
+  "keywords": [
+    "react-native",
+    "fit",
+    "image",
+    "video",
+    "modal",
+    "responsive",
+    "media",
+    "ios",
+    "android"
+  ],
+  "author": "tibbus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tibbus/react-native-fit/issues"
+  },
+  "homepage": "https://github.com/tibbus/react-native-fit#readme",
+  "dependencies": {
+    "react-native-cached-image": "1.3.3",
+    "react-native-video": "1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "2.3.4"
+  }
+}
