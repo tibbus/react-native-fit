@@ -3,56 +3,62 @@ React Native responsive components.
 ## Introduction
 Responsive Image, Video and Modal components that fits in dynamic containers.
 
-
 ![Example](https://github.com/tibbus/react-native-fit/blob/master/example/demo.gif)
 
 ## Install
-`npm install react-native-fit --save` <br>
+`npm install react-native-fit --save`   
 `yarn add react-native-fit`
 
+Run to link the libraries :   
+react-native link react-native-fetch-blob   
+react-native link   
+
 ## Usage
-Dependencies :
-https://github.com/kfiroo/react-native-cached-image AND <br>
-https://github.com/react-native-community/react-native-video
 
-Run to link the libraries : <br>
-react-native link react-native-fetch-blob <br>
-react-native link <br>
-
-Note: You can disable FitImage cache by passing props `cache={false}`
-
-
-FitImage is a wrapper of Image component from react-native:
+Supports all `Image` props + props from the `CachedImage` + FitImage ones  
+https://github.com/kfiroo/react-native-cached-image
 ```javascript
 import FitImage from 'react-native-fit/fitImage';
 
 render() {
-  return <FitImage source={{uri: 'yourImagepath...'}} />
+  return <FitImage source={{uri: 'yourImagepath...'}}  // remote url or local path
+    cache={false}                                      // default false - disable-enable cache
+    round={false}                                      // default false - make an image round/square
+    style={ {} }                                       // supports any style, can add `width` and will generate the height to ratio
+  />
 }
 ```
-
-FitVideo is a wrapper of react-native-video:
+  
+Supports all `Video` props + FitVideo ones  
+https://github.com/react-native-community/react-native-video
 ```javascript
 import FitVideo from 'react-native-fit/fitVideo';
 
 render() {
-  return <FitVideo source={{uri: 'yourVideopath...'}} />
+  return <FitVideo source={{uri: 'yourVideopath...'}}  // remote url or local path
+    playable={true}                                    // default true - make video playable (useful when you want to open in a modal)
+    playIcon={true}                                    // default true - show/hide play icon on video
+    style={ {} }                                       // supports any style, can add `width` and will generate the height to ratio
+  />
 }
 ```
-
-FitModal is a wrapper of Modal component from react-native:
+  
+Supports all `Modal` props + FitModal ones  
+https://facebook.github.io/react-native/docs/modal.html
 ```javascript
 import FitModal from 'react-native-fit/fitModal';
 
 render() {
   return (
-    <FitModal content={<Text style={{color: 'white'}}>text conten</Text>}>
+    <FitModal content={<Text style={{color: 'white'}}>text conten</Text>}  // React Component to render inside fullscreen Modal
+      style={ {} }                                                         // Style for the thumbnail that will open the Modal, Text in this case
+    >
       <Text>open Modal</Text>
     </FitModal>
   );
 }
 ```
-
+  
 Use fitModal with fitImage and fitVideo:
 ```javascript
 import { FitModal, FitImage, FitVideo } from 'react-native-fit';

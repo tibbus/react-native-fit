@@ -12,11 +12,13 @@
     "url": "git+https://github.com/tibbus/react-native-fit.git"
   },
   "keywords": [
+    "react-component",
     "react-native",
     "fit",
     "image",
     "video",
     "modal",
+    "fullscreen",
     "responsive",
     "media",
     "ios",
