@@ -9,20 +9,17 @@ Responsive Image, Video and Modal components that fits in dynamic containers.
 `npm install react-native-fit --save`   
 `yarn add react-native-fit`
 
-Run to link the libraries :   
-react-native link react-native-fetch-blob   
+Run to link the VIDEO library :   
 react-native link   
 
 ## Usage
 
-Supports all `Image` props + props from the `CachedImage` + FitImage ones  
-https://github.com/kfiroo/react-native-cached-image
+Supports all `Image` props +  FitImage ones  
 ```javascript
 import FitImage from 'react-native-fit/fitImage';
 
 render() {
   return <FitImage source={{uri: 'yourImagepath...'}}  // remote url or local path
-    cache={false}                                      // default false - disable-enable cache
     round={false}                                      // default false - make an image round/square
     style={ {} }                                       // supports any style, can add `width` and will generate the height to ratio
   />
