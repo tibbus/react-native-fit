@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Image, ViewStyle } from 'react-native';
-import CachedImage, { ImageCacheProvider } from 'react-native-cached-image';
+import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 import { FitImageProps } from './fitImage.props';
 import { getNativeProps } from '../utils';
+
 
 export class FitImage extends Component<FitImageProps, any> {
   private ratio: number;
@@ -24,10 +25,8 @@ export class FitImage extends Component<FitImageProps, any> {
       return;
     }
 
-    // Get the image dimensions from cached storage or from remote uri
-    ImageCacheProvider.getCachedImagePath(this.props.source.uri)
-      .then(localUri => this.setSizesByRatio(localUri))
-      .catch(error => this.setSizesByRatio(this.props.source));
+    // Get the image dimensions and set the Image size relative to its ratio
+    this.setSizesByRatio(this.props.source)
   }
 
   componentWillUnmount() {
@@ -79,24 +78,30 @@ export class FitImage extends Component<FitImageProps, any> {
     return getNativeProps(this.props, ['source', 'style', 'onLayout']);
   }
 
-  private setSizesByRatio = (uri) => {
-    Image.getSize(uri, (width, height) => {
-      this.ratio = width / height;
+  private setSizesByRatio = (source) => {
+    if (source.uri) {
+      Image.getSize(source.uri, (width, height) => {
+        this.ratio = width / height;
+        this.renderImage();
+      }, failure => console.log(`failed to load image, ${this.props.source}`));
+    } else {
+      const image = resolveAssetSource(source);
+      console.log(image)
+      this.ratio = image.width / image.height;
       this.renderImage();
-    }, failure => console.log(`failed to load image, ${this.props.source}`));
+    }
+
   }
 
   render() {
-    const ImageComponent = this.props.cache ? CachedImage : Image;
-
     return (
-      <ImageComponent {...this.getImageProps() }
+      <Image {...this.getImageProps() }
         source={this.props.source}
         style={[this.getStyle(), this.props.style]}
         onLayout={event => this.onLayout(event)}
       >
         {this.props.children}
-      </ImageComponent>
+      </Image>
     );
   };
 }

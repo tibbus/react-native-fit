@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/tibbus/react-native-fit#readme",
   "dependencies": {
-    "react-native-cached-image": "1.3.3",
     "react-native-video": "1.0.0"
   },
   "devDependencies": {
