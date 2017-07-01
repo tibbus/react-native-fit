@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableOpacity, View, ViewStyle, Image } from 'react-native';
+import { Modal, Text, TouchableOpacity, View, ViewStyle, Image, Platform, StatusBar } from 'react-native';
 
 import { FitModalProps } from './fitModal.props';
 import { styles } from './fitModal.styles';
@@ -16,9 +16,11 @@ export class FitModal extends Component<FitModalProps, any> {
 
   public pressOpen = () => {
     this.setState({ modalVisible: true });
+    StatusBar.setHidden(true, 'fade');
   }
 
   public pressClose = () => {
+    StatusBar.setHidden(false);
     this.setState({ modalVisible: false });
   }
 
