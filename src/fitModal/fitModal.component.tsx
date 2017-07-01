@@ -26,10 +26,18 @@ export class FitModal extends Component<FitModalProps, any> {
     return getNativeProps(this.props, ['content', 'style']);
   }
 
+  public getRequestCloseProp = () => {
+    if (Platform.OS === 'android') {
+      return { onRequestClose: this.pressClose }
+    }
+
+    return {};
+  }
+
   render() {
     return (
       <View>
-        <Modal {...this.getModalProps() } visible={this.state.modalVisible}>
+        <Modal {...this.getModalProps() } {...this.getRequestCloseProp() } visible={this.state.modalVisible}>
           <View style={styles.modalContainer}>
             <TouchableOpacity style={styles.closeButton} onPress={this.pressClose}>
               <Image source={require('../../assets/close-button.png')} style={styles.closeIcon} />
