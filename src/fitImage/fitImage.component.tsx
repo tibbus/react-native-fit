@@ -86,7 +86,6 @@ export class FitImage extends Component<FitImageProps, any> {
       }, failure => console.log(`failed to load image, ${this.props.source}`));
     } else {
       const image = resolveAssetSource(source);
-      console.log(image)
       this.ratio = image.width / image.height;
       this.renderImage();
     }
